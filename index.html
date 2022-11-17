@@ -71,6 +71,12 @@
 					console.log(d.data);
 					createImgDiv(url1, firstID, index);
 				}
+				let url2worker = new Worker("htmlRequest.js");
+				url2worker.postMessage(url2)
+				url2worker.onmessage = function (d) {
+					console.log(d.data);
+					createImgDiv(url2, firstID, index);
+				}
 				//console.log(url1worker);
 				//UrlExists(url1, firstID, index);
 				//UrlExists(url2, index, firstID);
