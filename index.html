@@ -29,9 +29,10 @@
 				option.innerHTML = id[0];
 				optionDiv.appendChild(option);
 			});
-
+			let workers = [];
 			function startSearch() {
 				mainDiv.innerHTML = "";
+				loadingDiv.style.width = "0%";
 				console.log("starting");
 				heavycomp(0);
 			}
@@ -44,6 +45,7 @@
 					searchPokemon(progress);
 					if (progress >= 420) {
 						loadingDiv.style.width = "100%";
+						killWorkers();
 						return;
 					}
 				}
@@ -56,6 +58,14 @@
 					heavycomp(progress);
 				}, 100);
 			}
+			function killWorkers() {
+				setTimeout(() => {
+					workers.forEach(worker => {
+						worker.terminate();
+					});
+				}, 5000);
+				
+			}
 			//heavycomp( 0 );
 			function searchPokemon(index) {
 				let firstID = document.getElementById("pokeID").value;
@@ -65,22 +75,22 @@
 				let url2 = "./CustomBattlers/" + index + "." + firstID + ".png";
 				//let url2 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + index + "." + firstID + ".png";
 				let url1worker = new Worker("htmlRequest.js");
+				workers.push(url1worker);
 				url1worker.postMessage(url1)
 				url1worker.onmessage = function (d) {
-					console.log(d.data);
 					createImgDiv(url1, firstID, index);
+					
 				}
 				let url2worker = new Worker("htmlRequest.js");
+				workers.push(url2worker);
 				url2worker.postMessage(url2)
 				url2worker.onmessage = function (d) {
-					console.log(d.data);
 					createImgDiv(url2, firstID, index);
 				}
 				//console.log(url1worker);
 				//UrlExists(url1, firstID, index);
 				//UrlExists(url2, index, firstID);
 				function createImgDiv(URL, id1, id2) {
-					console.log(URL);
 					let imgcontainer = document.createElement("div");
 					let node = document.createElement("img");
 					node.src = URL;
