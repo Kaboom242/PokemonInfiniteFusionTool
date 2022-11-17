@@ -13,7 +13,7 @@
 		<i>
 			Thanks for <a href="https://github.com/Aegide/Aegide.github.io">Aegide</a> having the raw spirtes.
 			<br>
-			The data used is from the game, but is mostly based on generation 5
+			The data used is from the game using the art pack (Oct 2022), but is mostly based on generation 5
 			The sprites shown here were mostly made by members of the <a href="https://discord.com/invite/2yynWRvBrB">IF Discord</a>,<br>
 			with some also coming from the <a href="https://www.reddit.com/r/PokemonInfiniteFusion/">IF Reddit</a>
 			community.
@@ -441,6 +441,7 @@
 					, ["Larvesta", 419]
 					, ["Stunfisk", 420]
 				]
+
 			let mainDiv = document.getElementById("main");
 			let loadingDiv = document.getElementById("loading");
 			let optionDiv = document.getElementById("pokeID");
@@ -469,22 +470,22 @@
 						return;
 					}
 				}
-				while (curDate - date < 2000);
-				loadingDiv.style.width = (progress / 420) * 100 + "%";
+				while (curDate - date < 100);
+				loadingDiv.style.width = Math.round( (progress / 420) * 100 ) + "%";
 				setTimeout(() => {
 					console.log('progress:' + progress);
 					//render()
 					heavycomp(progress);
-				}, 2000);
+				}, 100);
 			}
 			//heavycomp( 0 );
 			function searchPokemon(index) {
 				let firstID = document.getElementById("pokeID").value;
 
-				//let url1 = "./sprites/" + firstID + "." + index + ".png";
-				let url1 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + firstID + "." + index + ".png";
-				//let url2 = "./sprites/" + index + "." + firstID + ".png";
-				let url2 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + index + "." + firstID + ".png";
+				let url1 = "./CustomBattlers/" + firstID + "." + index + ".png";
+				//let url1 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + firstID + "." + index + ".png";
+				let url2 = "./CustomBattlers/" + index + "." + firstID + ".png";
+				//let url2 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + index + "." + firstID + ".png";
 
 				if (UrlExists(url1)) {
 					createImgDiv(url1, firstID, index);
