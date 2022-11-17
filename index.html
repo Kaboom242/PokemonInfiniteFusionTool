@@ -65,10 +65,17 @@
 				//let url1 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + firstID + "." + index + ".png";
 				let url2 = "./CustomBattlers/" + index + "." + firstID + ".png";
 				//let url2 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + index + "." + firstID + ".png";
-				console.log(url1worker);
-				UrlExists(url1, firstID, index);
-				UrlExists(url2, index, firstID);
+				let url1worker = new Worker("htmlRequest.js");
+				url1worker.postMessage(url1)
+				url1worker.onmessage = function (d) {
+					console.log(d.data);
+					createImgDiv(url1, firstID, index);
+				}
+				//console.log(url1worker);
+				//UrlExists(url1, firstID, index);
+				//UrlExists(url2, index, firstID);
 				function createImgDiv(URL, id1, id2) {
+					console.log(URL);
 					let imgcontainer = document.createElement("div");
 					let node = document.createElement("img");
 					node.src = URL;
@@ -88,17 +95,6 @@
 						if (id[1] == index) { name = id[0]; }
 					});
 					return name;
-				}
-				function UrlExists(URL, id1, id2) {
-					var request = new XMLHttpRequest();
-					request.onreadystatechange = function () {
-						if (request.readyState == 4 && request.status == 200) {
-							//callback(request.responseText); // Another callback here
-							createImgDiv(URL, id1, id2);
-						}
-					}
-					request.open('HEAD', URL, false);
-					request.send();
 				}
 				
 			}
