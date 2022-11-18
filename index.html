@@ -119,7 +119,7 @@
 				url2worker.postMessage(url2)
 				url2worker.onmessage = function (d) {
 					if (d.data == 200)
-						createImgDiv(url2, firstID, index);
+						createImgDiv(url2, index, firstID);
 					loadCount++;
 					url2worker.terminate();
 				}
