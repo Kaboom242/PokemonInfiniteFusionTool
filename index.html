@@ -1,22 +1,43 @@
 <html>
-	<head><title>Infinite Fusion Pokemon Sprite Finder</title></head>
-	<style>		
+<head>
+	<title>Infinite Fusion Pokemon Sprite Finder</title>
+	<style>
 		a {
-			color: black;		
+			color: black;
 		}
+		@keyframes sprite {
+			to {
+				background-position: -128px
+			}
+		}
+		.sprite {
+			height: 64px;
+			width: 64px;
+			animation: sprite 1.5s steps(2) infinite;
+			transform: translate(25% 25%);
+		}
+
+		
 	</style>
+
+	<script src="pokeData.js"></script>
+</head>
+	
 	<body style=" margin: 0px;">
-		<div style="position: fixed; background: gray; padding: 10px; width: 100%; box-sizing: border-box; color: white; font-size: 24px; display: grid; grid-template-columns: auto 1fr auto; grid-gap: 5px; justify-content: center; align-items: center; ">
+		<div style="position: fixed; background: #565656; padding: 10px; width: 100%; box-sizing: border-box; color: white; font-size: 24px; display: grid; grid-template-columns: auto 1fr auto; grid-gap: 5px; justify-content: center; max-height: 80%;">
 			<div style="color: white;"> Custom Sprite Finder </div>
-			<input type="text" placeholder="Pokemon Name" style="font-size: 20px; outline: none; border: none; border-radius: 8px; padding: 5px;"/>
+			<input type="text" placeholder="Pokemon Name" id="search" style="font-size: 20px; outline: none; border: none; border-radius: 8px; padding: 5px;" />
+
 			<div>
 				<span>Found:</span>
 				<span id="foundNum">00</span>
 			</div>
 			<div style="background: white; height: 5px; border-radius: 4px; overflow: hidden; grid-column: span 3;">
-				<div id="loading" style="width: 0%; height: 20px; background: green; transition: width 0.1s;"> </div>
+				<div id="loading" style="width: 0%; height: 20px; background: #fba92c; transition: width 0.1s;"> </div>
 			</div>
+			<div id="searchBox" style="grid-column: span 3; background: #9e9e9e; padding: 10px; display: grid; grid-template-columns: repeat(auto-fill, 100px); grid-gap: 4px; border-radius: 8px; font-size: 18px; justify-content: center; overflow-y: auto; max-height: 460px; "></div>
 		</div>
+		<script src="search.js"></script>
 		<div id='main' style='display: grid; grid-template-columns: repeat(auto-fill, 284px); grid-gap: 2px; padding-top: 75px;'> </div>
 		<i>
 			The data used is from the game using the art pack (Oct 2022), but is mostly based on generation 5
@@ -28,7 +49,7 @@
 		v1.8
 		<select id="pokeID" placeholder='pokemonFusionID'> </select>
 		<button onclick="startSearch()"> Find </button>
-		<script src="pokeData.js"></script>
+
 		<script src="main.js"></script>
 
 	</body>
