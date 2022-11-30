@@ -37,23 +37,22 @@ if (typeof _id !== 'undefined' || _id != '') {
 }
 
 
-function LoadingBar() {
-	setTimeout(() => {
-
-		loadingDiv.style.width = Math.round(loadCount / 840) * 100 + "%";
-		console.log(loadCount);
-		//loadCount++;
-		if (loadCount < 840)
-			LoadingBar();
-	}, 500);
-}
 function heavycomp(progress) {
 	var date = new Date();
 	var curDate = null;
 	do {
-		progress++;
 		curDate = new Date();
-		searchPokemon(progress);
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			//console.log(loadCount + " | " + progress);
+			if (loadCount+10 >= progress) {
+				progress++;
+				searchPokemon(progress);
+			}
+		}
+		else { 
+			progress++;
+			searchPokemon(progress);
+		}
 		if (progress >= 420) {
 			//loadingDiv.style.width = "100%";
 			//killWorkers();
@@ -74,6 +73,8 @@ function killWorkers() {
 }
 //heavycomp( 0 );
 function searchPokemon(index) {
+	//console.log(index+" % "+Math.round((index / 420) * 100));
+	loadingDiv.style.width = Math.round((index / 420) * 100) + "%";
 	let firstID = Number(_id);
 	if (isNaN(firstID)) { return; }
 	if (firstID > 420) { return; }
@@ -113,12 +114,12 @@ function searchPokemon(index) {
 		node.alt = index + "." + firstID;
 		imgcontainer.appendChild(node);
 		let nameText = document.createElement("div");
-		nameText.style = "text-align: center; font-weight: 900; font-size: 24px;";
+		nameText.style = "text-align: center; font-weight: 900;";
 		let name1 = getName(id1);
 		let name2 = getName(id2);
 		let host = window.location.href;
 		host = host.split('?')[0];
-		nameText.innerHTML = `<a href='${host}?id=${id1}'>${name1}</a>/<a href='${host}?id=${id2}'>${name2}</a>`;
+		nameText.innerHTML = `<a href='${host}?id=${id1}' style='font-size: 24px;'>${name1}</a>/<a href='${host}?id=${id2}' style='font-size: 24px;'>${name2}</a>`;
 		imgcontainer.appendChild(nameText);
 		mainDiv.appendChild(imgcontainer);
 		foundCount++;
