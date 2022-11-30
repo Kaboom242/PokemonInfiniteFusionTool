@@ -23,7 +23,7 @@ function populateSearchBox() {
         node.style = "text-align: center; width: 100px; background: white; padding: 2px; border-radius: 5px; box-sizing: border-box; ";
         searchBoxDiv.appendChild(node);
         let pokeIndex = String(value[1]).padStart(3, '0')
-        image.style.background = `url("/icons/icon${pokeIndex}.png")`; //`/icons/icon001.png`;
+        image.style.background = `url("./icons/icon${pokeIndex}.png")`; //`/icons/icon001.png`;
         image.style.margin = "auto";
         image.className = "sprite";
         node.appendChild(image);
