@@ -23,7 +23,7 @@
 	<script src="pokeData.js"></script>
 </head>
 	
-	<body style=" margin: 0px;">
+	<body style=" margin: 0px; background: #9e9e9e;">
 		<div style="position: fixed; background: #565656; padding: 10px; width: 100%; box-sizing: border-box; color: white; font-size: 24px; display: grid; grid-template-columns: auto 1fr auto; grid-gap: 5px; justify-content: center; max-height: 80%;">
 			<div style="color: white;"> Custom Sprite Finder </div>
 			<input type="text" placeholder="Pokemon Name" id="search" style="font-size: 20px; outline: none; border: none; border-radius: 8px; padding: 5px;" />
@@ -38,7 +38,7 @@
 			<div id="searchBox" style="grid-column: span 3; background: #9e9e9e; padding: 10px; display: grid; grid-template-columns: repeat(auto-fill, 100px); grid-gap: 4px; border-radius: 8px; font-size: 18px; justify-content: center; overflow-y: auto; max-height: 460px; "></div>
 		</div>
 		<script src="search.js"></script>
-		<div id='main' style='display: grid; grid-template-columns: repeat(auto-fill, 284px); grid-gap: 2px; padding-top: 75px;'> </div>
+		<div id='main' style='display: grid; grid-template-columns: repeat(auto-fill, 284px); grid-gap: 2px; padding-top: 90px; justify-content: center;  '> </div>
 		<i>
 			The data used is from the game using the art pack (Oct 2022), but is mostly based on generation 5
 			The sprites shown here were mostly made by members of the <a href="https://discord.com/invite/2yynWRvBrB">IF Discord</a>,<br>
@@ -47,8 +47,8 @@
 			Also thanks you <a href="https://github.com/Aegide/Aegide.github.io">Aegide</a>
 		</i>
 		v1.8
-		<select id="pokeID" placeholder='pokemonFusionID'> </select>
-		<button onclick="startSearch()"> Find </button>
+
+
 
 		<script src="main.js"></script>
 

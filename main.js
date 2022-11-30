@@ -1,14 +1,6 @@
 let mainDiv = document.getElementById("main");
 let loadingDiv = document.getElementById("loading");
-let optionDiv = document.getElementById("pokeID");
 let foundDiv = document.getElementById("foundNum");
-
-ids.forEach(id => {
-	let option = document.createElement("option");
-	option.value = id[1];
-	option.innerHTML = id[0];
-	optionDiv.appendChild(option);
-});
 
 let workers = [];
 window.onbeforeunload = function (event) {
@@ -37,8 +29,10 @@ let _id = search_params.get('id');
 if (typeof _id !== 'undefined' || _id != '') {
 	_id = parseInt(_id)
 	if (_id > 0 && _id <= 420) {
-		document.getElementById("pokeID").value = _id;
 		startSearch();
+	}
+	else {
+		populateSearchBox();
 	}
 }
 
@@ -80,7 +74,9 @@ function killWorkers() {
 }
 //heavycomp( 0 );
 function searchPokemon(index) {
-	let firstID = document.getElementById("pokeID").value;
+	let firstID = Number(_id);
+	if (isNaN(firstID)) { return; }
+	if (firstID > 420) { return; }
 
 	//let url1 = "./CustomBattlers/" + firstID + "." + index + ".png";
 	let url1 = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + firstID + "." + index + ".png";
