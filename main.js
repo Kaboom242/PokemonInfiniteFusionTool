@@ -2,12 +2,14 @@ let mainDiv = document.getElementById("main");
 let loadingDiv = document.getElementById("loading");
 let optionDiv = document.getElementById("pokeID");
 let foundDiv = document.getElementById("foundNum");
+
 ids.forEach(id => {
 	let option = document.createElement("option");
 	option.value = id[1];
 	option.innerHTML = id[0];
 	optionDiv.appendChild(option);
 });
+
 let workers = [];
 window.onbeforeunload = function (event) {
 	//return confirm("Confirm refresh");

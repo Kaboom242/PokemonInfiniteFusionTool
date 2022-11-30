@@ -1,24 +1,23 @@
 <html>
-	<head><title>Infinite Fusion Poke Display</title></head>
+	<head><title>Infinite Fusion Pokemon Sprite Finder</title></head>
 	<style>		
 		a {
 			color: black;		
 		}
 	</style>
 	<body style=" margin: 0px;">
-		<div style="position: fixed; background: gray; padding: 10px; width: 100%; box-sizing: border-box; color: white; display: grid; grid-template-columns: auto auto auto 1fr auto; grid-gap: 5px; justify-content: center; align-items: center; ">
-			<div style="color: white;">View All Custom Sprite Finder</div>
-			<select id="pokeID" placeholder='pokemonFusionID'></select>
-			<button onclick="startSearch()">Find</button>
-			<div style="background: white; height: 20px; border: 2px black solid; border-radius: 4px; overflow: hidden;">
-				<div id="loading" style="width: 0%; height: 20px; background: green; transition: width 0.1s;"></div>
-			</div>
+		<div style="position: fixed; background: gray; padding: 10px; width: 100%; box-sizing: border-box; color: white; font-size: 24px; display: grid; grid-template-columns: auto 1fr auto; grid-gap: 5px; justify-content: center; align-items: center; ">
+			<div style="color: white;"> Custom Sprite Finder </div>
+			<input type="text" placeholder="Pokemon Name" style="font-size: 20px; outline: none; border: none; border-radius: 8px; padding: 5px;"/>
 			<div>
 				<span>Found:</span>
 				<span id="foundNum">00</span>
 			</div>
+			<div style="background: white; height: 5px; border-radius: 4px; overflow: hidden; grid-column: span 3;">
+				<div id="loading" style="width: 0%; height: 20px; background: green; transition: width 0.1s;"> </div>
+			</div>
 		</div>
-		<div id='main' style='display: grid; grid-template-columns: repeat(auto-fill, 284px); grid-gap: 2px; padding-top: 50px;'> </div>
+		<div id='main' style='display: grid; grid-template-columns: repeat(auto-fill, 284px); grid-gap: 2px; padding-top: 75px;'> </div>
 		<i>
 			The data used is from the game using the art pack (Oct 2022), but is mostly based on generation 5
 			The sprites shown here were mostly made by members of the <a href="https://discord.com/invite/2yynWRvBrB">IF Discord</a>,<br>
@@ -26,8 +25,11 @@
 			community.
 			Also thanks you <a href="https://github.com/Aegide/Aegide.github.io">Aegide</a>
 		</i>
-		v1.7
-		<script src="pokeData.js"> </script>
-		<script src="main.js"> </script>
+		v1.8
+		<select id="pokeID" placeholder='pokemonFusionID'> </select>
+		<button onclick="startSearch()"> Find </button>
+		<script src="pokeData.js"></script>
+		<script src="main.js"></script>
+
 	</body>
 </html>
