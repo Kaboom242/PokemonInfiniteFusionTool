@@ -13,13 +13,13 @@ function populateSearchBox() {
     });
     let foundIDS = lowerIDsArray.filter(element => element[0].includes(searchDiv.value.toLowerCase()));
     if (foundIDS.length == 0) { return; }
-    console.log(foundIDS);
+    //console.log(foundIDS);
     foundIDS.forEach((value) => {
-        let node = document.createElement("a");
+        let node = document.createElement("a"); //<a href=><image> </a>
         let image = document.createElement("div");
         let host = window.location.href;
         host = host.split('?')[0];
-        node.href = `${host}?id=${value[1]}`;
+        node.href = `${host}?id=${value[1]}`;   
         node.style = "text-align: center; width: 100px; background: white; padding: 2px; border-radius: 5px; box-sizing: border-box; ";
         searchBoxDiv.appendChild(node);
         let pokeIndex = String(value[1]).padStart(3, '0')

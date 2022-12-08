@@ -1,5 +1,5 @@
-const ids =
-    [["bulbasaur", 1]
+const ids = [
+    ["bulbasaur", 1]
         , ["ivysaur", 2]
         , ["venusaur", 3]
         , ["charmander", 4]
